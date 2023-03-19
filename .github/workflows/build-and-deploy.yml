@@ -41,3 +41,4 @@ jobs:
           docker rm quickshare-frontend || true
           docker load < app.tar.gz
           docker run -d --name quickshare-frontend -p 80:80 ${{ env.IMAGE_NAME }}:latest
+
