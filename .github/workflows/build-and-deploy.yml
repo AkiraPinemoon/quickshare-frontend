@@ -29,10 +29,6 @@ jobs:
 
     - name: Build Docker image
       uses: docker/build-push-action@v4.0.0
-      with:
-        context: .
-        push: false
-        tags: ${{ env.IMAGE_NAME }}:latest
 
     - name: Create archive
       run: tar -czf app.tar.gz dist
