@@ -20,8 +20,19 @@ jobs:
     - name: Build app
       run: npm run build
       
+    - name: Generate Dockerfile
+      run: |
+        echo 'FROM nginx:latest' >> Dockerfile
+        echo 'COPY ./dist /usr/share/nginx/html' >> Dockerfile
+        echo 'EXPOSE 80' >> Dockerfile
+        cat Dockerfile
+
     - name: Build Docker image
       uses: docker/build-push-action@v4.0.0
+      with:
+        context: .
+        push: false
+        tags: ${{ env.IMAGE_NAME }}:latest
 
     - name: Create archive
       run: tar -czf app.tar.gz dist
