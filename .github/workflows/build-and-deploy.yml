@@ -19,3 +19,25 @@ jobs:
 
     - name: Build app
       run: npm run build
+      
+    - name: Build Docker image
+      uses: docker/build-push-action@v4.0.0
+      with:
+        context: .
+        push: false
+        tags: ${{ env.IMAGE_NAME }}:latest
+
+    - name: Create archive
+      run: tar -czf app.tar.gz dist
+
+    - name: Deploy Docker container
+      uses: LGinC/portainer-stack-deploy@1.0
+      with:
+        host: ssh.alpha-ome.ga:500
+        username: admin
+        password: ${{ secrets.SSH_PASSWORD }}
+        script: |
+          docker stop quickshare-frontend || true
+          docker rm quickshare-frontend || true
+          docker load < app.tar.gz
+          docker run -d --name quickshare-frontend -p 80:80 ${{ env.IMAGE_NAME }}:latest
