@@ -7,10 +7,10 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v3.6.0
 
     - name: Set up Node.js environment
-      uses: actions/setup-node@v3-beta
+      uses: actions/setup-node@v3
       with:
         node-version: '16.x'
 
