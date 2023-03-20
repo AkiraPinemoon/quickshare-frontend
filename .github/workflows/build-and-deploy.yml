@@ -49,9 +49,8 @@ jobs:
         username: admin
         password: ${{ secrets.SSH_PASSWORD }}
         after_script: |
-          docker stop quickshare-frontend &&
-          docker rm quickshare-frontend &&
-          sudo docker import app.tar.gz quickshare-frontend:latest &&
+          docker stop quickshare-frontend
+          sudo docker import app.tar.gz quickshare-frontend:latest
           sudo docker run --name quickshare-frontend --restart unless-stopped -p 80:80 -d quickshare-frontend:latest nginx -g daemon off
         scp_source: app.tar.gz
         scp_target: app.tar.gz
