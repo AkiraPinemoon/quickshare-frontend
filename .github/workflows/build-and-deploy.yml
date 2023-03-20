@@ -48,7 +48,7 @@ jobs:
         username: admin
         password: ${{ secrets.SSH_PASSWORD }}
         after_script: |
-          sudo docker load < app.tar.gz
-          sudo docker run -d --name quickshare-frontend -p 80:80 ${{ env.IMAGE_NAME }}
+          sudo docker import app.tar.gz ${{ env.IMAGE_NAME }}:latest
+          sudo docker run -d --name quickshare-frontend -p 80:80 ${{ env.IMAGE_NAME }}:latest
         scp_source: app.tar.gz
         scp_target: app.tar.gz
