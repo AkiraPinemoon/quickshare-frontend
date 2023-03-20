@@ -25,7 +25,6 @@ jobs:
         echo 'FROM nginx:latest' >> Dockerfile
         
         echo 'EXPOSE 80' >> Dockerfile
-        echo 'CMD ["nginx", "-g", "daemon off;"]' >> Dockerfile
         cat Dockerfile
 
     - name: Build Docker image
@@ -50,6 +49,6 @@ jobs:
         password: ${{ secrets.SSH_PASSWORD }}
         after_script: |
           sudo docker import app.tar.gz quickshare-frontend:latest
-          sudo docker run --name quickshare-frontend --restart unless-stopped -p 80:80 -d quickshare-frontend:latest
+          sudo docker run --name quickshare-frontend --restart unless-stopped -p 80:80 -d quickshare-frontend:latest nginx -g daemon off
         scp_source: app.tar.gz
         scp_target: app.tar.gz
