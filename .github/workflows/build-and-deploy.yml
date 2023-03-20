@@ -25,6 +25,7 @@ jobs:
         echo 'FROM nginx:latest' >> Dockerfile
         
         echo 'EXPOSE 80' >> Dockerfile
+        echo 'CMD ["nginx", "-g", "daemon off;"]' >> Dockerfile
         cat Dockerfile
 
     - name: Build Docker image
