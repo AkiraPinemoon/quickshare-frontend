@@ -43,7 +43,7 @@ jobs:
       # uses: kostyaten/ssh-server-deploy@e0deb814bc458a68b61f6597a865d096e33eb586
       uses: kostyaten/ssh-server-deploy@v4
       with:
-        host: ssh.alpha-ome.ga:500
+        host: ssh.alpha-ome.ga
         port: 500
         username: admin
         password: ${{ secrets.SSH_PASSWORD }}
