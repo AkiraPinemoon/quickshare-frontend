@@ -11,8 +11,8 @@
     </div>
 
     <div class="flex flex-wrap gap-1 justify-around text-white">
-      <div class="w-80 h-40 rounded bg-gradient-to-br from-cyan-500 to-indigo-500">test</div>
-      <div class="w-80 h-40 rounded bg-gradient-to-br from-blue-500 to-violet-600">test</div>
+      <div class="w-80 h-40 rounded bg-gradient-to-br from-cyan-500 to-indigo-500">upload file</div>
+      <div class="w-80 h-40 rounded bg-gradient-to-br from-blue-500 to-violet-600">enter code</div>
     </div>
 
     <div class="flex flex-col gap-1 w-5/6 max-w-2xl">
