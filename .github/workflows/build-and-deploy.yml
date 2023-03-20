@@ -36,15 +36,21 @@ jobs:
     - name: Create archive
       run: tar -czf app.tar.gz dist
 
-    - name: Deploy Docker container
-      uses: appleboy/ssh-action@master
+    
+
+    - name: SSH Server Deploy
+      # You may pin to the exact commit or the version.
+      # uses: kostyaten/ssh-server-deploy@e0deb814bc458a68b61f6597a865d096e33eb586
+      uses: kostyaten/ssh-server-deploy@v4
       with:
         host: ssh.alpha-ome.ga:500
+        port: 500
         username: admin
         password: ${{ secrets.SSH_PASSWORD }}
-        script: |
-          docker stop quickshare-frontend || true
-          docker rm quickshare-frontend || true
+        after_script: |
+          docker stop quickshare-frontend
+          docker rm quickshare-frontend
           docker load < app.tar.gz
           docker run -d --name quickshare-frontend -p 80:80 ${{ env.IMAGE_NAME }}:latest
-
+        scp_source: app.tar.gz
+        scp_target: app.tar.gz
