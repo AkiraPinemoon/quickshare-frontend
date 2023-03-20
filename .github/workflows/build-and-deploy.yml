@@ -23,7 +23,7 @@ jobs:
     - name: Generate Dockerfile
       run: |
         echo 'FROM nginx:latest' >> Dockerfile
-        
+        echo 'COPY ./dist /usr/share/nginx/html' >> Dockerfile
         echo 'EXPOSE 80' >> Dockerfile
         echo 'CMD nginx -g deamon off' >> Dockerfile
         cat Dockerfile
@@ -49,6 +49,8 @@ jobs:
         username: admin
         password: ${{ secrets.SSH_PASSWORD }}
         after_script: |
+          docker stop quickshare-frontend
+          docker rm quickshare-frontend
           sudo docker import app.tar.gz quickshare-frontend:latest
           sudo docker run --name quickshare-frontend --restart unless-stopped -p 80:80 -d quickshare-frontend:latest nginx -g daemon off
         scp_source: app.tar.gz
