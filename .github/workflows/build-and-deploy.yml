@@ -50,6 +50,6 @@ jobs:
         password: ${{ secrets.SSH_PASSWORD }}
         after_script: |
           sudo docker import app.tar.gz quickshare-frontend:latest
-          sudo docker create --name quickshare-frontend --restart unless-stopped -p 80:80 -d quickshare-frontend:latest nginx -g daemon off
+          sudo docker create --name quickshare-frontend --restart unless-stopped -p 80:80 quickshare-frontend:latest nginx -g daemon off
         scp_source: app.tar.gz
         scp_target: app.tar.gz
