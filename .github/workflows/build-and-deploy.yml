@@ -37,7 +37,7 @@ jobs:
       run: tar -czf app.tar.gz dist
 
     - name: Deploy Docker container
-      uses: LGinC/portainer-stack-deploy@1.0
+      uses: appleboy/ssh-action@master
       with:
         host: ssh.alpha-ome.ga:500
         username: admin
