@@ -5,7 +5,7 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <header class="flex justify-between place-items-center bg-gradient-to-r from-cyan-500 to-violet-600 p-1 pr-3 text-white">
     <RouterLink to="/" class="flex place-items-center">
-      <img alt="Vue logo" src="@/assets/logo.svg" class="w-16 h-16" />
+      <img alt="logo" src="@/assets/logo.svg" class="w-16 h-16" />
 
       <div class="">
         <h1 class="text-3xl">Quickshare</h1>
