@@ -2,12 +2,13 @@
 <script setup lang="ts">
 
 import { useRoute } from 'vue-router';
-import { ref } from 'vue';
 import api from '@/services/api'
 
+// get id from route
 const route = useRoute();  
 const id: string = route.params.id.toString();
 
+// downloads the file
 function download() {
   const link = api.getFileLink(id);
   if(link == null) return;
@@ -25,14 +26,17 @@ function download() {
     });
 }
 
+// stores if the file exists
 const accessible = api.doesIdExist(id);
+
+// automatically start download on load
 download();
 
 </script>
 
 <template>
   <div v-if="accessible">
-    <h1>This is an download page for {{ id }}</h1>
+    <h1>This is a download page for {{ id }}</h1>
     <button @click="download();">if the download desn't start automatically click here</button>
   </div>
   <div v-else>

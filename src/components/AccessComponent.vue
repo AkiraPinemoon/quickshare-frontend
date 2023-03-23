@@ -4,6 +4,7 @@
 import { ref } from "vue";
 import api from "@/services/api";
 
+// refs to the id digit inputs
 const d1 = ref<HTMLInputElement>();
 const d2 = ref<HTMLInputElement>();
 const d3 = ref<HTMLInputElement>();
@@ -11,8 +12,13 @@ const d4 = ref<HTMLInputElement>();
 const d5 = ref<HTMLInputElement>();
 const d6 = ref<HTMLInputElement>();
 
+// stores if input id is a valid file
+const accessible = ref(false);
+
+// stores the id
 var id = "";
 
+// selects next digit input field and updates id
 function cahngeCodeDigit(i: number) {
   switch (i) {
     case 1:
@@ -42,6 +48,7 @@ function cahngeCodeDigit(i: number) {
       break;
   }
 
+  // update id
   id = "";
   id += d1.value?.value;
   id += d2.value?.value;
@@ -49,9 +56,12 @@ function cahngeCodeDigit(i: number) {
   id += d4.value?.value;
   id += d5.value?.value;
   id += d6.value?.value;
+
+  // check if id is valid
   accessible.value = api.doesIdExist(id);
 }
 
+// clears input digit
 function clearCodeDigit(i: number) {
   switch (i) {
     case 1:
@@ -76,8 +86,6 @@ function clearCodeDigit(i: number) {
       break;
   }
 }
-
-const accessible = ref(false);
 
 </script>
 
