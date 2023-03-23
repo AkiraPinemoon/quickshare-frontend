@@ -13,10 +13,10 @@ import { RouterLink, RouterView } from 'vue-router'
       </div>
     </RouterLink>
     
-    <RouterLink to="/about" class="text-right">  
+    <a href="https://github.com/AkiraPinemoon" class="text-right">  
       <p class="text-xs">developed and hosted by</p>
       <h1 class="text-lg">Akira Pinemoon</h1>
-    </RouterLink>
+    </a>
   </header>
 
   <RouterView />

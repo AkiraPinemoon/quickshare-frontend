@@ -93,10 +93,10 @@ const accessible = ref(false);
       <input ref="d6" @click="clearCodeDigit(6);" @input="cahngeCodeDigit(6);" placeholder="_" class="h-full w-10 border-white border-2 rounded bg-transparent text-3xl text-center placeholder:text-white" />
     </div>
 
-    <router-link :to="'/download/' + id" v-if="accessible" class="bg-green-500 w-64 hover:bg-green-600 flex place-items-center justify-center rounded p-1">
+    <router-link :to="'/download/' + id" v-if="accessible" class="bg-green-500 w-[260px] hover:bg-green-600 flex place-items-center justify-center rounded p-1">
       <img alt="Access Icon" src="@/assets/accessIcon.svg" class="w-10 h-10" />
     </router-link>
-    <div v-else class="bg-indigo-600 w-64 flex place-items-center justify-center rounded p-1">
+    <div v-else class="bg-indigo-600 w-[260px] flex place-items-center justify-center rounded p-1">
       <img alt="No Access Icon" src="@/assets/noAccessIcon.svg" class="w-10 h-10" />
     </div>
     
