@@ -12,7 +12,7 @@ enum statusEnum {
   NoFile,
   HasFile,
   Uploading,
-  Done,
+  Hosting,
 }
 const status = ref(statusEnum.NoFile);
 
@@ -28,6 +28,9 @@ const filename = ref("");
 const progress = ref(0);
 // stores the assigned file if when upload is done
 const fileId = ref<string|null>(null);
+
+// stores interval for keep online funtion
+var keepOnlineInterval: any = null;
 
 // uploads file and gets assigned id
 async function upload() {
@@ -45,7 +48,22 @@ async function upload() {
   );
 
   // TODO: receives assigned id
-  status.value = statusEnum.Done;
+  status.value = statusEnum.Hosting;
+  keepOnlineInterval = setInterval(keepOnline, 1000);
+}
+
+// sends keep online message
+function keepOnline() {
+  if(!fileId.value) return;
+  api.keepOnline(fileId.value);
+}
+
+// sends unload message and stops sendung keep online messages
+function unload() {
+  if (!fileId.value) return;
+  clearInterval(keepOnlineInterval);
+  api.unloadFile(fileId.value);
+  status.value = statusEnum.NoFile;
 }
 
 </script>
@@ -72,8 +90,12 @@ async function upload() {
     </div>
   </div>
 
-  <div v-if="status === statusEnum.Done" class="w-80 h-40 rounded bg-gradient-to-br from-cyan-500 to-indigo-500 flex flex-col place-items-center justify-center gap-1">
-    <p v-if="fileId" class="max-w-[260px]">Upload Complete!<br />Id: {{ fileId }}</p>
+  <div v-if="status === statusEnum.Hosting" class="w-80 h-40 rounded bg-gradient-to-br from-cyan-500 to-indigo-500 flex flex-col place-items-center justify-center gap-1">
+    <p v-if="fileId" class="max-w-[260px]">
+      Upload Complete!<br />
+      Id: {{ fileId }}<br />
+      <button @click="unload();">Click here to stop hosting file.</button>
+    </p>
     <p v-else>Upload Failed!</p>
   </div>
 </template>

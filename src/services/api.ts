@@ -26,8 +26,18 @@ async function uploadFile(file: File, progressCb: any): Promise<string|null> {
   return "123456";
 }
 
+// TODO: send keep online message
+function keepOnline(id: string) {
+}
+
+// TODO: send unload message
+function unloadFile(id: string) {
+}
+
 export default {
   doesIdExist,
   getFileLink,
   uploadFile,
+  keepOnline,
+  unloadFile,
 }
