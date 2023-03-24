@@ -19,7 +19,7 @@ const accessible = ref(false);
 var id = "";
 
 // selects next digit input field and updates id
-function cahngeCodeDigit(i: number) {
+async function cahngeCodeDigit(i: number) {
   switch (i) {
     case 1:
       if(d1.value) d1.value.value = d1.value.value.toUpperCase();
@@ -58,7 +58,7 @@ function cahngeCodeDigit(i: number) {
   id += d6.value?.value;
 
   // check if id is valid
-  accessible.value = api.doesIdExist(id);
+  accessible.value = await api.doesIdExist(id);
 }
 
 // clears input digit
@@ -90,7 +90,7 @@ function clearCodeDigit(i: number) {
 </script>
 
 <template>
-  <div class="w-80 h-40 rounded bg-gradient-to-br from-blue-500 to-violet-600 flex flex-col place-items-center justify-center gap-1">
+  <div class="w-80 h-40 rounded text-white bg-gradient-to-br from-blue-500 to-violet-600 flex flex-col place-items-center justify-center gap-1">
     <p class="w-64">Enter a Code</p>
     <div class="h-16 flex flex-row justify-center place-items-center gap-1">
       <input ref="d1" @click="clearCodeDigit(1);" @input="cahngeCodeDigit(1);" placeholder="_" class="h-full w-10 border-white border-2 rounded bg-transparent text-3xl text-center placeholder:text-white" />

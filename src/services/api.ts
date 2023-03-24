@@ -1,9 +1,13 @@
 
 import axios from "axios";
 
+const BASE_API_ROUTE = "https://quickshare.alpha-ome.ga/api/";
+
 // TODO: checks if the id is an available file
-function doesIdExist(id: string): boolean {
-  if(id == "123456") return true;
+async function doesIdExist(id: string): Promise<boolean> {
+  const res = await axios.get(BASE_API_ROUTE + "isValid/" + id);
+  console.log(res.data);
+  if(res.data == "true") return true;
   return false;
 }
 

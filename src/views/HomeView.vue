@@ -12,8 +12,9 @@ import AccessComponent from "@/components/AccessComponent.vue"
       </p>
     </div>
 
-    <div class="flex flex-wrap gap-1 justify-around text-white">
+    <div class="flex flex-wrap gap-1 justify-around place-items-center text-purple-800">
       <UploadComponent />
+      <p>or</p>
       <AccessComponent />
     </div>
 
@@ -22,19 +23,6 @@ import AccessComponent from "@/components/AccessComponent.vue"
       <p>
         Just upload your file and share it either by typing in the 5-digit code on the receiving device; scanning the QR-Code or sharing the link. When the sender closes their connection, the file will be deleted from the server.
       </p>
-    </div>
-
-    <div class="flex gap-1 w-5/6 portrait:flex-col max-w-2xl">
-      <div class="flex flex-col gap-1">
-        <h1 class="text-2xl font-medium">Statistics:</h1>
-        <p>
-          Total data uploaded: 5,34GB<br />
-          Number of files transferred: 358
-        </p>
-      </div>
-      <div class="bg-red-200 grow h-20 rounded-lg p-3">
-        Stats
-      </div>
     </div>
   </main>
 </template>

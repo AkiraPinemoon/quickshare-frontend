@@ -70,32 +70,33 @@ function unload() {
 
 <template>
   <input @change="updateFile()" ref="inputField" type="file" class="hidden" />
-
-  <div v-if="status === statusEnum.NoFile" @click="inputField?.click()" class="w-80 h-40 rounded bg-gradient-to-br from-cyan-500 to-indigo-500 flex flex-col place-items-center justify-center gap-1 hover:from-cyan-600 hover:to-indigo-600">
-    <p class="text-3xl">Upload a File</p>
-    <p class="text-sm">drop here or click to select</p>
-  </div>
-
-  <div v-if="status === statusEnum.HasFile" class="w-80 h-40 rounded bg-gradient-to-br from-cyan-500 to-indigo-500 flex flex-col place-items-center justify-center gap-1">
-    <p class="max-w-[260px]">Upload "{{ filename }}"?</p>
-    <button @click="upload();" class="bg-green-500 w-[260px] hover:bg-green-600 flex place-items-center justify-center rounded p-1">
-      <img alt="Access Icon" src="@/assets/uploadIcon.svg" class="w-10 h-10" />
-    </button>
-  </div>
-
-  <div v-if="status === statusEnum.Uploading" class="w-80 h-40 rounded bg-gradient-to-br from-cyan-500 to-indigo-500 flex flex-col place-items-center justify-center gap-1">
-    <p class="max-w-[260px]">Upload "{{ filename }}"?</p>
-    <div class="bg-indigo-600 w-[260px] h-12 flex place-items-center justify-center rounded p-1">
-      <p>{{ progress }}%</p>
+  <div class="text-white">
+    <div v-if="status === statusEnum.NoFile" @click="inputField?.click()" class="w-80 h-40 rounded bg-gradient-to-br from-cyan-500 to-indigo-500 flex flex-col place-items-center justify-center gap-1 hover:from-cyan-600 hover:to-indigo-600">
+      <p class="text-3xl">Upload a File</p>
+      <p class="text-sm">drop here or click to select</p>
     </div>
-  </div>
 
-  <div v-if="status === statusEnum.Hosting" class="w-80 h-40 rounded bg-gradient-to-br from-cyan-500 to-indigo-500 flex flex-col place-items-center justify-center gap-1">
-    <p v-if="fileId" class="max-w-[260px]">
-      Upload Complete!<br />
-      Id: {{ fileId }}<br />
-      <button @click="unload();">Click here to stop hosting file.</button>
-    </p>
-    <p v-else>Upload Failed!</p>
+    <div v-if="status === statusEnum.HasFile" class="w-80 h-40 rounded bg-gradient-to-br from-cyan-500 to-indigo-500 flex flex-col place-items-center justify-center gap-1">
+      <p class="max-w-[260px]">Upload "{{ filename }}"?</p>
+      <button @click="upload();" class="bg-green-500 w-[260px] hover:bg-green-600 flex place-items-center justify-center rounded p-1">
+        <img alt="Access Icon" src="@/assets/uploadIcon.svg" class="w-10 h-10" />
+      </button>
+    </div>
+
+    <div v-if="status === statusEnum.Uploading" class="w-80 h-40 rounded bg-gradient-to-br from-cyan-500 to-indigo-500 flex flex-col place-items-center justify-center gap-1">
+      <p class="max-w-[260px]">Upload "{{ filename }}"?</p>
+      <div class="bg-indigo-600 w-[260px] h-12 flex place-items-center justify-center rounded p-1">
+        <p>{{ progress }}%</p>
+      </div>
+    </div>
+
+    <div v-if="status === statusEnum.Hosting" class="w-80 h-40 rounded bg-gradient-to-br from-cyan-500 to-indigo-500 flex flex-col place-items-center justify-center gap-1">
+      <p v-if="fileId" class="max-w-[260px]">
+        Upload Complete!<br />
+        Id: {{ fileId }}<br />
+        <button @click="unload();">Click here to stop hosting file.</button>
+      </p>
+      <p v-else>Upload Failed!</p>
+    </div>
   </div>
 </template>
