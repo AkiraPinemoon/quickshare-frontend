@@ -4,6 +4,8 @@
 import { useRoute } from 'vue-router';
 import api from '@/services/api'
 
+import { ref, onBeforeMount } from 'vue';
+
 // get id from route
 const route = useRoute();  
 const id: string = route.params.id.toString();
@@ -27,10 +29,13 @@ function download() {
 }
 
 // stores if the file exists
-const accessible = api.doesIdExist(id);
+const accessible = ref(false);
+onBeforeMount(async () => {
+  accessible.value = await api.doesIdExist(id);
+  if(accessible.value) download();
+})
 
 // automatically start download on load
-download();
 
 </script>
 

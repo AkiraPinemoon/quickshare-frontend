@@ -2,19 +2,17 @@
 import axios from "axios";
 
 const BASE_API_ROUTE = "https://quickshare.alpha-ome.ga/api/";
+//const BASE_API_ROUTE = "http://localhost/api/";
 
 // TODO: checks if the id is an available file
 async function doesIdExist(id: string): Promise<boolean> {
   const res = await axios.get(BASE_API_ROUTE + "isValid/" + id);
-  console.log(res.data);
-  if(res.data == "true") return true;
-  return false;
+  return res.data.file;
 }
 
 // TODO: returns the download link for a file
-function getFileLink(id: string): string|null {
-  if(id == "123456") return "https://picsum.photos/500";
-  return null;
+function getFileLink(id: string): string {
+  return BASE_API_ROUTE + "access/" + id;
 }
 
 // TODO: uploads a file while sending progress to progressCd
