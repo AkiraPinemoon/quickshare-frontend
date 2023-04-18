@@ -57,8 +57,9 @@ async function cahngeCodeDigit(i: number) {
   id += d5.value?.value;
   id += d6.value?.value;
 
-  // check if id is valid
-  accessible.value = await api.doesIdExist(id);
+  // check if id is valid#
+  if(id.length != 6) accessible.value = false;
+  else accessible.value = await api.doesIdExist(id);
 }
 
 // clears input digit
