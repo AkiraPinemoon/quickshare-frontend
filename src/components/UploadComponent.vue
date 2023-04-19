@@ -28,6 +28,8 @@ const filename = ref("");
 const progress = ref(0);
 // stores the assigned file if when upload is done
 const fileId = ref<string|null>(null);
+// stores the token to remove the file or keep it online
+const token = ref<string|null>(null);
 
 // stores interval for keep online funtion
 var keepOnlineInterval: any = null;
@@ -38,7 +40,7 @@ async function upload() {
   status.value = statusEnum.Uploading;
 
   // uploads file and updates progress UI
-  fileId.value = await api.uploadFile(
+  const data = await api.uploadFile(
     inputField.value.files[0],
     (progressEvent: any) => {
       if(!progressEvent.total) return;
@@ -47,22 +49,28 @@ async function upload() {
     },
   );
 
-  // TODO: receives assigned id
+  if(!data) return;
+
+  fileId.value = data.id;
+  token.value = data.token;
+
   status.value = statusEnum.Hosting;
-  keepOnlineInterval = setInterval(keepOnline, 1000);
+  keepOnlineInterval = setInterval(keepOnline, 10000);
 }
 
 // sends keep online message
 function keepOnline() {
   if(!fileId.value) return;
-  api.keepOnline(fileId.value);
+  if(!token.value) return;
+  api.keepOnline(fileId.value, token.value);
 }
 
 // sends unload message and stops sendung keep online messages
 function unload() {
   if (!fileId.value) return;
+  if (!token.value) return;
   clearInterval(keepOnlineInterval);
-  api.unloadFile(fileId.value);
+  api.unloadFile(fileId.value, token.value);
   status.value = statusEnum.NoFile;
 }
 
