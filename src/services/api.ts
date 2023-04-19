@@ -21,17 +21,17 @@ function getFileLink(id: string): string {
   return BASE_API_ROUTE + "access/" + id;
 }
 
-// TODO: uploads a file while sending progress to progressCd
+// uploads a file while sending progress to progressCd
 async function uploadFile(file: File, progressCb: any): Promise<string|null> {
   const formData = new FormData();
-  formData.append('file', file);
-  const headers = { 'Content-Type': 'multipart/form-data' };
-  const res = await axios.post('https://httpbin.org/post', formData, {
+  formData.append("file", file);
+  const headers = { "Content-Type": "multipart/form-data" };
+  const res = await axios.post(BASE_API_ROUTE + "upload", formData, {
     headers,
     onUploadProgress: progressCb
   });
 
-  return "123456";
+  return res.data.id;
 }
 
 // TODO: send keep online message
