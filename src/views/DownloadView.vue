@@ -11,9 +11,11 @@ const route = useRoute();
 const id: string = route.params.id.toString();
 
 // downloads the file
-function download() {
+async function download() {
   const link = api.getFileLink(id);
   if(link == null) return;
+
+  const filename = await api.getFilename(id);
 
   fetch(link)
     .then(response => response.blob())
@@ -21,7 +23,7 @@ function download() {
       var url = window.URL.createObjectURL(blob);
       var a = document.createElement('a');
       a.href = url;
-      a.download = "";
+      a.download = filename;
       document.body.appendChild(a);
       a.click();    
       a.remove();
