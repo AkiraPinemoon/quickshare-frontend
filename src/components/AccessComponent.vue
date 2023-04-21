@@ -133,12 +133,12 @@ function clearCodeDigit(i: number) {
   <div class="w-80 h-40 rounded text-white bg-gradient-to-br from-blue-500 to-violet-600 flex flex-col place-items-center justify-center gap-1">
     <p class="w-64">Enter a Code</p>
     <div class="h-16 flex flex-row justify-center place-items-center gap-1">
-      <input ref="d1" @keydown.delete="goBack(1);" @click="clearCodeDigit(1);" @input="cahngeCodeDigit(1);" maxlength="1" placeholder="_" class="h-full w-10 border-white border-2 rounded bg-transparent text-3xl text-center placeholder:text-white" />
-      <input ref="d2" @keydown.delete="goBack(2);" @click="clearCodeDigit(2);" @input="cahngeCodeDigit(2);" maxlength="1" placeholder="_" class="h-full w-10 border-white border-2 rounded bg-transparent text-3xl text-center placeholder:text-white" />
-      <input ref="d3" @keydown.delete="goBack(3);" @click="clearCodeDigit(3);" @input="cahngeCodeDigit(3);" maxlength="1" placeholder="_" class="h-full w-10 border-white border-2 rounded bg-transparent text-3xl text-center placeholder:text-white" />
-      <input ref="d4" @keydown.delete="goBack(4);" @click="clearCodeDigit(4);" @input="cahngeCodeDigit(4);" maxlength="1" placeholder="_" class="h-full w-10 border-white border-2 rounded bg-transparent text-3xl text-center placeholder:text-white" />
-      <input ref="d5" @keydown.delete="goBack(5);" @click="clearCodeDigit(5);" @input="cahngeCodeDigit(5);" maxlength="1" placeholder="_" class="h-full w-10 border-white border-2 rounded bg-transparent text-3xl text-center placeholder:text-white" />
-      <input ref="d6" @keydown.delete="goBack(6);" @click="clearCodeDigit(6);" @input="cahngeCodeDigit(6);" maxlength="1" placeholder="_" class="h-full w-10 border-white border-2 rounded bg-transparent text-3xl text-center placeholder:text-white" />
+      <input ref="d1" @keydown.delete="goBack(1);" @click="clearCodeDigit(1);" @input="cahngeCodeDigit(1);" maxlength="1" inputmode="numeric" placeholder="_" class="h-full w-10 border-white border-2 rounded bg-transparent text-3xl text-center placeholder:text-white" />
+      <input ref="d2" @keydown.delete="goBack(2);" @click="clearCodeDigit(2);" @input="cahngeCodeDigit(2);" maxlength="1" inputmode="numeric" placeholder="_" class="h-full w-10 border-white border-2 rounded bg-transparent text-3xl text-center placeholder:text-white" />
+      <input ref="d3" @keydown.delete="goBack(3);" @click="clearCodeDigit(3);" @input="cahngeCodeDigit(3);" maxlength="1" inputmode="numeric" placeholder="_" class="h-full w-10 border-white border-2 rounded bg-transparent text-3xl text-center placeholder:text-white" />
+      <input ref="d4" @keydown.delete="goBack(4);" @click="clearCodeDigit(4);" @input="cahngeCodeDigit(4);" maxlength="1" inputmode="numeric" placeholder="_" class="h-full w-10 border-white border-2 rounded bg-transparent text-3xl text-center placeholder:text-white" />
+      <input ref="d5" @keydown.delete="goBack(5);" @click="clearCodeDigit(5);" @input="cahngeCodeDigit(5);" maxlength="1" inputmode="numeric" placeholder="_" class="h-full w-10 border-white border-2 rounded bg-transparent text-3xl text-center placeholder:text-white" />
+      <input ref="d6" @keydown.delete="goBack(6);" @click="clearCodeDigit(6);" @input="cahngeCodeDigit(6);" maxlength="1" inputmode="numeric" placeholder="_" class="h-full w-10 border-white border-2 rounded bg-transparent text-3xl text-center placeholder:text-white" />
     </div>
 
     <router-link :to="'/download/' + id" v-if="accessible" class="bg-green-500 w-[260px] hover:bg-green-600 flex place-items-center justify-center rounded p-1">
