@@ -12,7 +12,7 @@ import AccessComponent from "@/components/AccessComponent.vue"
       </p>
     </div>
 
-    <div class="flex flex-wrap gap-1 justify-around place-items-center text-purple-800">
+    <div class="flex flex-col gap-1 justify-around place-items-center text-purple-800 md:flex-row">
       <UploadComponent />
       <p>or</p>
       <AccessComponent />
