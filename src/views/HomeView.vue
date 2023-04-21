@@ -21,7 +21,7 @@ import AccessComponent from "@/components/AccessComponent.vue"
     <div class="flex flex-col gap-1 w-5/6 max-w-2xl">
       <h1 class="text-2xl font-medium">How it works:</h1>
       <p>
-        Just upload your file and share it either by typing in the 5-digit code on the receiving device; scanning the QR-Code or sharing the link. When the sender closes their connection, the file will be deleted from the server.
+        Just upload your file and share it either by typing in the 6-digit code on the receiving device; scanning the QR-Code or sharing the link. When the sender closes their connection, the file will be deleted from the server.
       </p>
     </div>
   </main>
