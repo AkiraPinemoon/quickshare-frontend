@@ -4,7 +4,7 @@ import AccessComponent from "@/components/AccessComponent.vue"
 </script>
 
 <template>
-  <main class="text-purple-800 flex flex-col place-items-center gap-5 p-5">
+  <main class="text-purple-800 dark:text-white flex flex-col place-items-center gap-5 p-5">
     <div class="flex flex-col gap-1 w-5/6 max-w-2xl">
       <h1 class="text-2xl font-medium">About the Service:</h1>
       <p>
@@ -14,7 +14,7 @@ import AccessComponent from "@/components/AccessComponent.vue"
 
     <div class="flex flex-col gap-1 justify-around place-items-center text-purple-800 md:flex-row">
       <UploadComponent />
-      <p>or</p>
+      <p class="dark:text-white">or</p>
       <AccessComponent />
     </div>
 

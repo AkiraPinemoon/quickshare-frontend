@@ -42,11 +42,11 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <div v-if="accessible">
+  <div v-if="accessible" class="flex flex-col gap-1 justify-around place-items-center p-10">
     <h1>This is a download page for {{ id }}</h1>
     <button @click="download();">if the download desn't start automatically click here</button>
   </div>
-  <div v-else>
+  <div v-else class="flex flex-col gap-1 justify-around place-items-center p-10">
     <h1>Can't find file</h1>
   </div>
 </template>
