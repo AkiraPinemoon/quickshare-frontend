@@ -1,7 +1,7 @@
 
 import axios from "axios";
 
-const BASE_API_ROUTE = "https://quickshare.alpha-ome.ga/api/";
+const BASE_API_ROUTE = "/api/";
 //const BASE_API_ROUTE = "http://localhost/api/";
 
 // checks if the id is an available file
