@@ -32,12 +32,12 @@ async function download() {
 
 // stores if the file exists
 const accessible = ref(false);
+
+// automatically start download on load
 onBeforeMount(async () => {
   accessible.value = await api.doesIdExist(id);
   if(accessible.value) download();
 })
-
-// automatically start download on load
 
 </script>
 

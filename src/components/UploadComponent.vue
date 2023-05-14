@@ -1,6 +1,8 @@
 
 <script setup lang="ts">
 
+import QrCode from '@chenfengyuan/vue-qrcode'
+
 import { ref } from 'vue';
 import api from '@/services/api';
 
@@ -74,6 +76,8 @@ function unload() {
   status.value = statusEnum.NoFile;
 }
 
+const hostname = window.location.host;
+
 </script>
 
 <template>
@@ -98,13 +102,19 @@ function unload() {
       </div>
     </div>
 
-    <div v-if="status === statusEnum.Hosting" class="w-80 h-40 rounded bg-gradient-to-br from-cyan-500 to-indigo-500 flex flex-col place-items-center justify-center gap-1">
-      <p v-if="fileId" class="max-w-[260px]">
-        Upload Complete!<br />
-        Id: {{ fileId }}<br />
-        <button @click="unload();">Click here to stop hosting file.</button>
-      </p>
-      <p v-else>Upload Failed!</p>
+    <div v-if="status === statusEnum.Hosting" class="w-80 h-40 rounded bg-gradient-to-br from-cyan-500 to-indigo-500 flex flex-row place-items-center justify-center gap-1 p-1.5">
+      <div class="text-center h-full w-1/2">
+        <div v-if="fileId" class="max-w-[260px] flex flex-col justify-between w-full h-full">
+          <p>
+            Upload Successfull<br />
+            Your ID:<br />
+            {{ fileId }}<br />
+          </p>
+          <button @click="unload();" class="rounded bg-red-600 p-1.5 w-full">Stop hosting</button>
+        </div>
+        <p v-else>Upload Failed!</p>
+      </div>
+      <QrCode :value="hostname + '/download/' + fileId" :options="$options" class="rounded"></QrCode>
     </div>
   </div>
 </template>
