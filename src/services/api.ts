@@ -1,8 +1,8 @@
 
 import axios from "axios";
 
-//const BASE_API_ROUTE = "/api/";
-const BASE_API_ROUTE = "http://192.168.178.165/api/";
+const BASE_API_ROUTE = "/api/";
+//const BASE_API_ROUTE = "http://192.168.178.165/api/";
 
 // checks if the id is an available file
 async function doesIdExist(id: string): Promise<boolean> {
