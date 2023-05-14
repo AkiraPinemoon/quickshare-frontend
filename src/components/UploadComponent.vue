@@ -1,7 +1,7 @@
 
 <script setup lang="ts">
 
-import QrCode from '@chenfengyuan/vue-qrcode'
+import QrCode from 'vue-qrcode'
 
 import { ref } from 'vue';
 import api from '@/services/api';
@@ -114,7 +114,7 @@ const hostname = window.location.host;
         </div>
         <p v-else>Upload Failed!</p>
       </div>
-      <QrCode :value="hostname + '/download/' + fileId" class="rounded h-full aspect-square" style="height: 100%; aspect-ratio: 1;"></QrCode>
+      <QrCode :value="hostname + '/download/' + fileId" class="rounded h-full" :margin="2"></QrCode>
     </div>
   </div>
 </template>
