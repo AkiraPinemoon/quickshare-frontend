@@ -114,7 +114,7 @@ const hostname = window.location.host;
         </div>
         <p v-else>Upload Failed!</p>
       </div>
-      <div class="h-full aspect-square"><QrCode :value="hostname + '/download/' + fileId" class="rounded"></QrCode></div>
+      <div class="h-full aspect-square"><QrCode :value="hostname + '/download/' + fileId" type="image/png" :color="{ dark: '#000000ff', light: '#ffffffff' }" class="rounded"></QrCode></div>
     </div>
   </div>
 </template>
