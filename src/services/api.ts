@@ -25,9 +25,6 @@ async function uploadFile(
   file: File,
   progressCb: any
 ): Promise<{ id: string; token: string } | null> {
-  const formData = new FormData()
-  formData.append('file', file)
-
   const chunkSize = 5 * 1024 * 1024 // 5MB chunks
   const totalChunks = Math.ceil(file.size / chunkSize)
   const uploadId = Math.random().toString(36).substring(2, 15)
@@ -39,12 +36,14 @@ async function uploadFile(
 
     const chunkFormData = new FormData()
     chunkFormData.append('file', chunk)
-    chunkFormData.append('chunkIndex', chunkIndex.toString())
-    chunkFormData.append('totalChunks', totalChunks.toString())
-    chunkFormData.append('uploadId', uploadId)
-    chunkFormData.append('filename', file.name)
 
     const res = await axios.post(BASE_API_ROUTE + 'upload', chunkFormData, {
+      params: {
+        chunkIndex: chunkIndex,
+        totalChunks: totalChunks,
+        uploadId: uploadId,
+        filename: file.name
+      },
       onUploadProgress: (progressEvent) => {
         const totalLoaded = chunkIndex * chunkSize + (progressEvent.loaded || 0)
         const totalProgress = {
